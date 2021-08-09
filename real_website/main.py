@@ -7,5 +7,13 @@ html_text = requests.get(
 soup = BeautifulSoup(html_text, 'lxml')
 job = soup.find('li', class_='clearfix job-bx wht-shd-bx')
 
-company_name = job.find('h3', class_='joblist-comp-name')
-print(company_name)
+company_name = job.find('h3', class_='joblist-comp-name').text
+skills = job.find('span', class_='srp-skills').text
+
+print(f'''
+
+Company Name = {company_name}
+Required Skills: {skills}
+
+''')
+# print(company_name)
